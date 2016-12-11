@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :new]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :create, :destroy]
 
   def index
     @records = Record.all
@@ -8,12 +8,7 @@ class RecordsController < ApplicationController
 
   def today
     today = Date.today
-    @record = Record.find_by(year: today.year, month: today.month, day: today.day)
-    if @record
-      redirect_to @record
-    else
-      render 'new'
-    end
+    redirect_to "/records/#{today.year}/#{today.month}/#{today.day}"
   end
 
   def show
@@ -21,12 +16,28 @@ class RecordsController < ApplicationController
     render json: @record
   end
 
+  def date
+    year = params[:year].to_i
+    month = params[:month].to_i
+    day = params[:day].to_i
+    @record = Record.find_by(date: Date.new(year, month, day))
+    if @record
+      respond_to do |format|
+        format.html { render 'edit' }
+        format.json { render json: @record }
+      end
+    else
+      @record = Record.new(date: Date.new(year, month, day))
+      render 'new'
+    end
+  end
+
   def new
-    @record = Record.new
+    @record = Record.new(date: params[:date])
   end
 
   def create
-    @record = Record.new(params[:record])
+    @record = current_user.records.new(record_params)
     if @record.save
       redirect_to @record
     else
@@ -51,12 +62,11 @@ class RecordsController < ApplicationController
   end
 
   private
+  def record_params
+    params.require(:record).permit(:running, :lifting, :dqs, :code, :writing, :business, :date, :citizenship, :reading, :work, :family, :extended_family, :bored, :diy)
+  end
 
   def find_record
-    Record.find_by(
-      year: params[:year],
-      month: params[:month],
-      day: params[:day]
-    )
+    Record.find_by(date: params[:date])
   end
 end

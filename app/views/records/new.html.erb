@@ -1,0 +1,25 @@
+<h1>New record</h1>
+<%= simple_form_for @record do |f| %>
+  <h2>Daily habits</h2>
+  <%= f.input :running, as: :text %>
+  <%= f.input :lifting, as: :text %>
+  <%= f.input :dqs, as: :float %>
+  <%= f.input :code, as: :text %>
+  <%= f.input :writing, as: :text %>
+  <%= f.input :business, as: :text %>
+  <%= f.input :date, as: :date %>
+  <% if @record.date.sunday? %>
+    <h2>Weekly habits</h2>
+    <%= f.input :citizenship, as: :text %>
+    <%= f.input :reading, as: :text %>
+    <%= f.input :work, as: :text %>
+    <%= f.input :family, as: :integer %>
+    <%= f.input :extended_family, as: :integer %>
+    <%= f.input :bored, as: :text %>
+  <% end %>
+  <% if @record.date ==  @record.date.end_of_month %>
+    <h2>Monthly habits</h2>
+    <%= f.input :diy, as: :text %>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>
