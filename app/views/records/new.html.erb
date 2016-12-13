@@ -1,4 +1,4 @@
-<h1>New record for <%= @record.date.strftime("%A, %B %d, %Y") %></h1>
+<h1><%= @record.date.strftime("%A, %B %d, %Y") %></h1>
 <%= simple_form_for @record do |f| %>
   <h2>Daily habits</h2>
   <%= f.input :running, as: :boolean, checked_value: true, unchecked_value: false, label: 'Executed running plan (including rest)?' %>
