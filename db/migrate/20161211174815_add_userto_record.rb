@@ -3,7 +3,7 @@ class AddUsertoRecord < ActiveRecord::Migration
     create_table :records do |t|
       t.boolean :running
       t.boolean :lifting
-      t.boolean :dqs
+      t.float :dqs
       t.boolean :code
       t.boolean :writing
       t.boolean :business

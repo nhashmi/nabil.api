@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20161213114154) do
   create_table "records", force: :cascade do |t|
     t.boolean  "running"
     t.boolean  "lifting"
-    t.boolean  "dqs"
+    t.float    "dqs"
     t.boolean  "code"
     t.boolean  "writing"
     t.boolean  "business"
