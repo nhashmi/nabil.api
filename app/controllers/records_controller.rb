@@ -62,8 +62,9 @@ class RecordsController < ApplicationController
   end
 
   private
+
   def record_params
-    params.require(:record).permit(:running, :lifting, :dqs, :code, :writing, :business, :date, :citizenship, :reading, :work, :family, :extended_family, :bored, :diy)
+    params.require(:record).permit(:running, :running_details, :lifting, :lifting_details, :dqs, :code, :code_details, :writing, :writing_details, :business, :business_details, :date, :citizenship, :citizenship_details, :reading, :reading_details, :work, :work_details, :family, :extended_family, :bored, :bored_details, :diy, :diy_details)
   end
 
   def find_record

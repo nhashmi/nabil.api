@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211202416) do
+ActiveRecord::Schema.define(version: 20161213114154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,23 +22,33 @@ ActiveRecord::Schema.define(version: 20161211202416) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.text     "running"
-    t.text     "lifting"
-    t.float    "dqs"
-    t.text     "code"
-    t.text     "writing"
-    t.text     "business"
+    t.boolean  "running"
+    t.boolean  "lifting"
+    t.boolean  "dqs"
+    t.boolean  "code"
+    t.boolean  "writing"
+    t.boolean  "business"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
     t.integer  "user_id"
-    t.text     "citizenship"
-    t.text     "reading"
-    t.text     "work"
+    t.boolean  "citizenship"
+    t.boolean  "reading"
+    t.boolean  "work"
     t.integer  "family"
     t.integer  "extended_family"
-    t.text     "bored"
-    t.text     "diy"
+    t.boolean  "bored"
+    t.boolean  "diy"
+    t.text     "running_details"
+    t.text     "lifting_details"
+    t.text     "code_details"
+    t.text     "writing_details"
+    t.text     "business_details"
+    t.text     "citizenship_details"
+    t.text     "reading_details"
+    t.text     "work_details"
+    t.text     "bored_details"
+    t.text     "diy_details"
   end
 
   add_index "records", ["user_id"], name: "index_records_on_user_id", using: :btree

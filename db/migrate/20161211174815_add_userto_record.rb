@@ -1,12 +1,12 @@
 class AddUsertoRecord < ActiveRecord::Migration
   def change
     create_table :records do |t|
-      t.text :running
-      t.text :lifting
-      t.float :dqs
-      t.text :code
-      t.text :writing
-      t.text :business
+      t.boolean :running
+      t.boolean :lifting
+      t.boolean :dqs
+      t.boolean :code
+      t.boolean :writing
+      t.boolean :business
 
       t.timestamps
     end
