@@ -39,7 +39,8 @@ class RecordsController < ApplicationController
   def create
     @record = current_user.records.new(record_params)
     if @record.save
-      redirect_to @record
+      date = @record.date
+      redirect_to "/records/#{date.year}/#{date.month}/#{date.day}"
     else
       render 'new'
     end
