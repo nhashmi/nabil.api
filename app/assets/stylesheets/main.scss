@@ -1,0 +1,27 @@
+html,
+body {
+  background-color: #eee;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+}
+
+.form-field:nth-of-type(odd) {
+  width: 100%;
+  background-color: #ccc;
+  margin-bottom: 2vh;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
