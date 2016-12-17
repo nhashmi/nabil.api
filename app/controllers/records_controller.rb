@@ -6,9 +6,9 @@ class RecordsController < ApplicationController
     render json: @records
   end
 
-  def today
-    today = Date.today
-    redirect_to "/records/#{today.year}/#{today.month}/#{today.day}"
+  def yesterday
+    yesterday = Date.yesterday
+    redirect_to "/records/#{yesterday.year}/#{yesterday.month}/#{yesterday.day}"
   end
 
   def show

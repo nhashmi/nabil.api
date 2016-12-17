@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'date_selectors#new'
+  root 'records#yesterday'
 
+  get 'date' => 'date_selectors#new'
   post 'date' => 'date_selectors#create'
   resources :records, except: [:show]
   get 'records/:year/:month/:day' => 'records#date'
-  get 'today' => 'records#today'
+  get 'yesterday' => 'records#yesterday'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
