@@ -1,20 +1,81 @@
-html,
+$orange: #ff7612;
+$font-stack: 'Montserrat', sans-serif;
+
 body {
-  background-color: #eee;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-stack;
   box-sizing: border-box;
-  font-size: 24px;
+  max-width: 320px;
   text-align: center;
+  overflow-x:hidden;
   margin: 0 auto;
+  padding: 5vh 2vw 10vh;
+  // Background gradient generator: http://angrytools.com/gradient/
+  background: -moz-linear-gradient(90deg, #FFFFFF 0%, $orange 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $orange), color-stop(100%, #FFFFFF)); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, #FFFFFF 0%, $orange 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, #FFFFFF 0%, $orange 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, #FFFFFF 0%, $orange 100%); /* ie10+ */
+  background: linear-gradient(0deg, #FFFFFF 0%, $orange 100%); /* w3c */
+  background-repeat: no-repeat;
+}
+
+label {
+  margin: 0 3vw;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+  margin-right: 3vw;
+}
+
+input[type=number] {
+  font-size: 16px;
+  font-family: $font-stack;
+  padding-left: 3vw;
+  margin-top: 2vh;
+}
+
+textarea {
+  margin: 2vh auto;
+  width: 80%;
+  height: 10vh;
+  font-family: $font-stack;
+  font-size: 16px;
+}
+
+input:focus, textarea:focus {
+  background-color: lighten(grayscale($orange), 40%);
+}
+
+div.date {
+  margin: 2vh auto;
+  width: 80%;
+  border: 2px solid $orange;
+  border-radius: 5px;
+  padding: 2vh 0;
+}
+
+input[type=submit] {
+  padding: 2vh 5vw;
+  font-family: $font-stack;
+  font-size: 16px;
+  background-color: $orange;
+  border-radius: 5px;
+  margin: 2vh 0;
 }
 
 .container {
+  font-size: 16px;
   width: 100%;
+  margin: 0 auto;
+}
+
+.container__date {
+  background-color: #fefefe;
 }
 
 .form-field:nth-of-type(odd) {
   width: 100%;
-  background-color: #ccc;
   margin-bottom: 2vh;
 }
 

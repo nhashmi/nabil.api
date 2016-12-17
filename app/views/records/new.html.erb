@@ -5,44 +5,58 @@
     <h2>Daily habits</h2>
     <div class="form-field">
       <%= f.input :running, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you execute your running plan yesterday (including rest)?' %>
-      <%= f.input :running_details, as: :text, label: 'Details' %>
+      <%= f.input :running_details, as: :text, label: false %>
     </div>
     <div class="form-field">
       <%= f.input :lifting, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you execute your lifting and mobility plan yesterday (including rest)?' %>
-      <%= f.input :lifting_details, as: :text , label: 'Details'%>
+      <%= f.input :lifting_details, as: :text , label: false%>
     </div>
     <div class="form-field">
       <%= f.input :code, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you make a serious code contribution (work or side project)?' %>
-      <%= f.input :code_details, as: :text, label: 'Details' %>
+      <%= f.input :code_details, as: :text, label: false %>
     </div>
     <div class="form-field">
       <%= f.input :writing, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you write 1,000 words?' %>
-      <%= f.input :writing_details, as: :text, label: 'Details' %>
+      <%= f.input :writing_details, as: :text, label: false %>
     </div>
     <div class="form-field">
       <%= f.input :business, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you read a business case study or 20 pages of a business book?' %>
-      <%= f.input :business_details, as: :text, label: 'Details' %>
+      <%= f.input :business_details, as: :text, label: false %>
     </div>
     <div class="form-field">
       <%= f.input :dqs, as: :float, label: 'DQS' %>
     </div>
     <% if @record.date.sunday? %>
       <h2>Weekly habits</h2>
-      <%= f.input :citizenship, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you call a representative, write a letter to a newspaper/magazine, or work on a civic coding project this week?' %>
-      <%= f.input :citizenship_details, as: :text, label: 'Details' %>
-      <%= f.input :reading, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you finish reading a book this week?' %>
-      <%= f.input :reading_details, as: :text, label: 'Details' %>
-      <%= f.input :work, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you make a significant non-code contribution at work this week (giving a talk or recording a screencast, adding documentation, providing thorough feedback or new ideas for a product)?' %>
-      <%= f.input :work_details, as: :text, label: 'Details' %>
-      <%= f.input :family, as: :integer, label: 'How many days did you visit or talk to immediate family this week?' %>
-      <%= f.input :extended_family, as: :integer, label: 'How many days did you visit or talk to extended family this week?' %>
-      <%= f.input :bored, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you get productively bored this week?' %>
-      <%= f.input :bored_details, as: :text, label: 'Details' %>
+      <div class="form-field">
+        <%= f.input :citizenship, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you call a representative, write a letter to a newspaper/magazine, or work on a civic coding project this week?' %>
+        <%= f.input :citizenship_details, as: :text, label: false %>
+      </div>
+      <div class="form-field">
+        <%= f.input :reading, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you finish reading a book this week?' %>
+        <%= f.input :reading_details, as: :text, label: false %>
+      </div>
+      <div class="form-field">
+        <%= f.input :work, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you make a significant non-code contribution at work this week (giving a talk or recording a screencast, adding documentation, providing thorough feedback or new ideas for a product)?' %>
+        <%= f.input :work_details, as: :text, label: false %>
+      </div>
+      <div class="form-field">
+        <%= f.input :family, as: :integer, label: 'How many days did you visit or talk to immediate family this week?' %>
+      </div>
+      <div class="form-field">
+        <%= f.input :extended_family, as: :integer, label: 'How many days did you visit or talk to extended family this week?' %>
+      </div>
+      <div class="form-field">
+        <%= f.input :bored, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you get productively bored this week?' %>
+        <%= f.input :bored_details, as: :text, label: false %>
+      </div>
     <% end %>
     <% if @record.date ==  @record.date.end_of_month %>
       <h2>Monthly habits</h2>
-      <%= f.input :diy, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you complete a drawing or DIY project like Arduino this month?' %>
-      <%= f.input :diy_details, as: :text %>
+      <div class="form-field">
+        <%= f.input :diy, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you complete a drawing or DIY project like Arduino this month?' %>
+        <%= f.input :diy_details, as: :text %>
+      </div>
     <% end %>
     <%= f.input :date, as: :date %>
     <%= f.button :submit, 'Save' %>

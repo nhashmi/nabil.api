@@ -1,4 +1,7 @@
-<%= simple_form_for :date_selector, url: '/date' do |f| %>
-  <%= f.input :date, as: :date %>
-  <%= f.button :submit, 'Go to date' %>
-<% end %>
+<div class="container">
+  <h1>Select a date</h1>
+  <%= simple_form_for :date_selector, url: '/date' do |f| %>
+    <%= f.input :date, as: :date, label: false %>
+    <%= f.button :submit, 'Go to date' %>
+  <% end %>
+</div>
