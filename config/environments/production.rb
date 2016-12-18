@@ -76,4 +76,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Only allow requests from http://nabil.io in production
+  config.action_dispatch.default_headers = {
+    'Access-Control-Allow-Origin' => 'http://nabil.io',
+    'Access-Control-Request-Method' => %w{GET OPTIONS}.join(",")
+  }
 end
