@@ -78,8 +78,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Only allow requests from http://nabil.io in production
-  config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => 'http://nabil.io',
-    'Access-Control-Request-Method' => %w{GET OPTIONS}.join(",")
-  }
+  config.middleware.insert_before 0, "Rack::Cors" do
+    allow do
+      origins /\Ahttp:\/\/nabil\.io\z/
+      resource '*', headers: :any, methods: [:get, :options]
+    end
+  end
 end
