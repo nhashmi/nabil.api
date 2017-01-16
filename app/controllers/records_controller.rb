@@ -52,8 +52,8 @@ class RecordsController < ApplicationController
 
   def update
     @record = find_record
-    @record.update!(params[:record])
-    redirect_to @record
+    @record.update!(record_params)
+    redirect_to '/date', notice: "Record updated successfully"
   end
 
   def destroy
