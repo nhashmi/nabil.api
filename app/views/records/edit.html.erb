@@ -46,10 +46,6 @@
       <div class="form-field">
         <%= f.input :extended_family, as: :integer, label: 'How many days did you visit or talk to extended family this week?' %>
       </div>
-      <div class="form-field">
-        <%= f.input :bored, as: :boolean, checked_value: true, unchecked_value: false, label: 'Did you get productively bored this week?' %>
-        <%= f.input :bored_details, as: :text, label: false %>
-      </div>
     <% end %>
     <% if @record.date ==  @record.date.end_of_month %>
       <h2>Monthly habits</h2>
