@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :create, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :create]
 
   def index
     @records = Record.all
@@ -11,11 +11,6 @@ class RecordsController < ApplicationController
     redirect_to "/records/#{yesterday.year}/#{yesterday.month}/#{yesterday.day}"
   end
 
-  def show
-    @record = find_record
-    render json: @record
-  end
-
   def date
     year = params[:year].to_i
     month = params[:month].to_i
@@ -23,7 +18,7 @@ class RecordsController < ApplicationController
     @record = Record.find_by(date: Date.new(year, month, day))
     if @record
       respond_to do |format|
-        format.html { render 'edit' }
+        format.html { redirect_to action: 'edit' }
         format.json { render json: @record }
       end
     else
@@ -47,25 +42,25 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = find_record
+    year = params[:year].to_i
+    month = params[:month].to_i
+    day = params[:day].to_i
+    @record = Record.find_by(date: Date.new(year, month, day))
   end
 
   def update
-    @record = find_record
-    @record.update!(record_params)
-    redirect_to '/date', notice: "Record updated successfully"
-  end
-
-  def destroy
-    @record = find_record
-    @record.destroy!
-    redirect_to root_url
+    @record = Record.find_by(date: params[:record][:date])
+    if @record.update(record_params)
+      redirect_to "/date", notice: "Record updated successfully"
+    else
+      render 'edit', error: "Error: #{@record.errors}"
+    end
   end
 
   private
 
   def record_params
-    params.require(:record).permit(:running, :running_details, :lifting, :lifting_details, :dqs, :code, :code_details, :writing, :writing_details, :business, :business_details, :date, :citizenship, :citizenship_details, :reading, :reading_details, :work, :work_details, :family, :extended_family, :diy, :diy_details)
+    params.require(:record).permit(:id, :running, :running_details, :lifting, :lifting_details, :dqs, :code, :code_details, :writing, :writing_details, :business, :business_details, :date, :citizenship, :citizenship_details, :reading, :reading_details, :work, :work_details, :family, :extended_family, :diy, :diy_details)
   end
 
   def find_record

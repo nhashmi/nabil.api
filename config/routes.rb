@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   get 'date' => 'date_selectors#new'
   post 'date' => 'date_selectors#create'
-  resources :records, except: [:show]
+  resources :records, except: [:show, :destroy]
   get 'records/:year/:month/:day' => 'records#date'
   get 'yesterday' => 'records#yesterday'
+  get 'records/:year/:month/:day/edit' => 'records#edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
